@@ -8,21 +8,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class AlgoChoosingBtn implements ActionListener {
+/**
+ * This class is used to create the buttons for the algorithms.
+ */
+public class AlgoBtn implements ActionListener {
 
+        // Initializing the buttons for the algorithms.
     JButton bubbleSortBtn;
     JButton mergeSortBtn;
     JButton insertionSortBtn;
     JButton selectionSortBtn;
     JButton startBtn;
+
+        // Initializing the algorithm name.
     String algo = "bubble";
+
+            // Initializing the panel with the bars.
     BarPanel barPanel;
 
+        // Initializing the algorithms.
     BubbleSort bubbleSort;
     MergeSort mergeSort;
     InsertionSort insertionSort;
 
-    public AlgoChoosingBtn(JFrame appFrame, BarPanel barPanel){
+
+    public AlgoBtn(JFrame appFrame, BarPanel barPanel){
         this.barPanel = barPanel;
 
         bubbleSortBtn = new JButton("Bubble Sort");
@@ -66,6 +76,10 @@ public class AlgoChoosingBtn implements ActionListener {
         insertionSort = new InsertionSort(barPanel);
     }
 
+    /**
+     * Invoked when an action occurs.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == bubbleSortBtn){
@@ -95,6 +109,9 @@ public class AlgoChoosingBtn implements ActionListener {
         }
     }
 
+    /**
+     * Set all buttons to gray.
+     */
     private void setBtnGray(){
         bubbleSortBtn.setBackground(Color.GRAY);
         mergeSortBtn.setBackground(Color.GRAY);

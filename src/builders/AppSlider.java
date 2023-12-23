@@ -5,6 +5,10 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * This class is responsible for creating the slider that allows the user to choose the number of bars
+ * that will be sorted.
+ */
 public class AppSlider implements ChangeListener {
 
     JFrame appFrame;
@@ -29,7 +33,7 @@ public class AppSlider implements ChangeListener {
         barPanel.setBounds(0, 200, 800, 300);
         barPanel.setNumberOfBars(slider.getValue());
 
-        AlgoChoosingBtn algoChoosing = new AlgoChoosingBtn(appFrame, barPanel);
+        AlgoBtn algoChoosing = new AlgoBtn(appFrame, barPanel);
 
         label = new JLabel("Choose the number of bars: " + slider.getValue());
 
@@ -39,15 +43,17 @@ public class AppSlider implements ChangeListener {
         appFrame.add(barPanel);
     }
 
+    /**
+     * This method is called whenever the slider is moved.
+     * @param e  a ChangeEvent object
+     */
     @Override
     public void stateChanged(ChangeEvent e){
         label.setText("Choose the number of bars: " + slider.getValue());
         int sliderValue = slider.getValue();
 
-        // Update the number of bars in the panel
         barPanel.setNumberOfBars(sliderValue);
 
-        // Repaint the panel to reflect the changes
         barPanel.repaint();
     }
 

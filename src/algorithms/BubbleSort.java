@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.*;
 
+/**
+ * This class is responsible for sorting the bars using the bubble sort algorithm.
+ */
 public class BubbleSort {
 
     BarPanel barPanel;
@@ -15,6 +18,9 @@ public class BubbleSort {
         this.barPanel = barPanel;
     }
 
+    /**
+     * Sorts the bars using the bubble sort algorithm.
+     */
     public void sort() {
         List<Rectangle> bars = barPanel.getBars();
         boolean[] swapped = { false };

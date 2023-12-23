@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.*;
 
+/**
+ * This class is responsible for generating the bars.
+ */
 public class BarPanel extends JPanel {
 
     private List<Rectangle> bars;
@@ -14,10 +17,18 @@ public class BarPanel extends JPanel {
         this.bars = new ArrayList<>();
     }
 
+    /**
+     * Sets the number of bars.
+     * @param numberOfBars the number of bars to set
+     */
     public void setNumberOfBars(int numberOfBars) {
         generateRandomBars(numberOfBars);
     }
 
+    /**
+     * Generates random bars.
+     * @param numberOfBars the number of bars to generate
+     */
     private void generateRandomBars(int numberOfBars) {
         bars.clear();
         Random random = new Random();
@@ -34,6 +45,10 @@ public class BarPanel extends JPanel {
         }
     }
 
+    /**
+     * Paints the bars.
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -45,6 +60,10 @@ public class BarPanel extends JPanel {
         }
     }
 
+    /**
+     * Returns the list of bars.
+     * @return the list of bars.
+     */
     public List<Rectangle> getBars() {
         return bars;
     }
