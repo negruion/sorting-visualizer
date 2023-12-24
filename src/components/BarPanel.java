@@ -1,4 +1,4 @@
-package builders;
+package components;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import javax.swing.*;
 public class BarPanel extends JPanel {
 
     private List<Rectangle> bars;
+    private int speed;
 
     public BarPanel(){
         this.bars = new ArrayList<>();
@@ -55,7 +56,7 @@ public class BarPanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
 
         for (Rectangle bar : bars) {
-            g2d.setColor(Color.BLUE);
+            g2d.setColor(Color.BLACK);
             g2d.fillRect(bar.x, bar.y, bar.width, bar.height);
         }
     }
@@ -66,5 +67,12 @@ public class BarPanel extends JPanel {
      */
     public List<Rectangle> getBars() {
         return bars;
+    }
+
+    public void setSpeed(int speed){
+        this.speed = speed;
+    }
+    public int getSpeed(){
+        return this.speed;
     }
 }

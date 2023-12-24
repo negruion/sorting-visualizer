@@ -1,4 +1,4 @@
-package builders;
+package components;
 
 import algorithms.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ import javax.swing.*;
 /**
  * This class is used to create the buttons for the algorithms.
  */
-public class AlgoBtn implements ActionListener {
+public class AlgoOptionsBtn implements ActionListener {
 
         // Initializing the buttons for the algorithms.
     JButton bubbleSortBtn;
@@ -32,8 +32,10 @@ public class AlgoBtn implements ActionListener {
     SelectionSort selectionSort;
     QuickSort quickSort;
 
+    int speed;
 
-    public AlgoBtn(JFrame appFrame, BarPanel barPanel){
+
+    public AlgoOptionsBtn(JFrame appFrame, BarPanel barPanel){
         this.barPanel = barPanel;
 
         bubbleSortBtn = new JButton("Bubble Sort");
@@ -48,7 +50,6 @@ public class AlgoBtn implements ActionListener {
         mergeSortBtn.setBackground(Color.GRAY);
         mergeSortBtn.setFocusable(false);
         mergeSortBtn.addActionListener(this);
-        mergeSortBtn.setEnabled(false);
         appFrame.add(mergeSortBtn);
 
         insertionSortBtn = new JButton("Insertion Sort");
@@ -113,12 +114,13 @@ public class AlgoBtn implements ActionListener {
             quickSortBtn.setBackground(Color.RED);
             algo = "quick";
         } else{
+            speed = barPanel.getSpeed();
             switch (algo){
-                case "bubble" -> bubbleSort.sort();
-                case "merge" -> mergeSort.sort();
-                case "insertion" -> insertionSort.sort();
-                case "selection" -> selectionSort.sort();
-                case "quick" -> quickSort.sort();
+                case "bubble" -> bubbleSort.sort(speed);
+                case "merge" -> mergeSort.sort(speed);
+                case "insertion" -> insertionSort.sort(speed);
+                case "selection" -> selectionSort.sort(speed);
+                case "quick" -> quickSort.sort(speed);
             }
         }
     }
@@ -131,5 +133,6 @@ public class AlgoBtn implements ActionListener {
         mergeSortBtn.setBackground(Color.GRAY);
         insertionSortBtn.setBackground(Color.GRAY);
         selectionSortBtn.setBackground(Color.GRAY);
+        quickSortBtn.setBackground(Color.GRAY);
     }
 }
