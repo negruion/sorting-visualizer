@@ -1,24 +1,26 @@
 package algorithms;
 
-import builders.BarPanel;
+import components.BarPanel;
 import java.awt.*;
 import java.util.List;
 import javax.swing.*;
 
 public class QuickSort {
     BarPanel barPanel;
+    int speed;
     public QuickSort(BarPanel barPanel){
         this.barPanel = barPanel;
     }
 
-    public void sort(){
+    public void sort(int speed){
+        this.speed = speed;
         List<Rectangle> bars = barPanel.getBars();
         doQuickSort(bars, 0,bars.size()-1);
         barPanel.repaint();
     }
-    public void doQuickSort(List<Rectangle> bars, int low, int high)
+    private void doQuickSort(List<Rectangle> bars, int low, int high)
     {
-        Timer timer = new Timer(500, null);
+        Timer timer = new Timer(speed*10, null);
 
         int[] i = {low};
         int[] j = {high};

@@ -1,6 +1,6 @@
 package algorithms;
 
-import builders.BarPanel;
+import components.BarPanel;
 import java.awt.*;
 import java.util.List;
 import javax.swing.*;
@@ -11,10 +11,10 @@ public class SelectionSort {
         this.barPanel = barPanel;
     }
 
-    public void sort() {
+    public void sort(int speed) {
         List<Rectangle> bars = barPanel.getBars();
 
-        Timer timer = new Timer(500, null);
+        Timer timer = new Timer(speed*10, null);
 
         int[] i = { 0 };
 

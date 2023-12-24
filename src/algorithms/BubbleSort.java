@@ -1,8 +1,6 @@
 package algorithms;
-import builders.BarPanel;
+import components.BarPanel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.*;
 
@@ -13,7 +11,6 @@ public class BubbleSort {
 
     BarPanel barPanel;
 
-
     public BubbleSort(BarPanel barPanel){
         this.barPanel = barPanel;
     }
@@ -21,11 +18,11 @@ public class BubbleSort {
     /**
      * Sorts the bars using the bubble sort algorithm.
      */
-    public void sort() {
+    public void sort(int speed) {
         List<Rectangle> bars = barPanel.getBars();
         boolean[] swapped = { false };
 
-        Timer timer = new Timer(5, null);
+        Timer timer = new Timer(speed*10, null);
 
         int[] i = { 0 };
         int[] j = { 0 };

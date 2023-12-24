@@ -1,6 +1,6 @@
 package algorithms;
 
-import builders.BarPanel;
+import components.BarPanel;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ public class MergeSort {
         this.currentStep = 0;
     }
 
-    public void sort() {
+    public void sort(int speed) {
         List<Rectangle> bars = barPanel.getBars();
-        Timer timer = new Timer(50, null);
+        Timer timer = new Timer(speed*10, null);
 
         timer.addActionListener(e -> {
             if (currentStep < steps.size()) {
