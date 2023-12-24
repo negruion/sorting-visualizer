@@ -3,6 +3,7 @@ package algorithms;
 import builders.BarPanel;
 import java.awt.*;
 import java.util.List;
+import javax.swing.*;
 
 public class QuickSort {
     BarPanel barPanel;
@@ -13,21 +14,28 @@ public class QuickSort {
     public void sort(){
         List<Rectangle> bars = barPanel.getBars();
         doQuickSort(bars, 0,bars.size()-1);
-
-        System.out.println("Quick Sort");
-        for(Rectangle bar : bars){
-            System.out.println(bar.getHeight());
-        }
         barPanel.repaint();
     }
     public void doQuickSort(List<Rectangle> bars, int low, int high)
     {
-        if (low < high) {
-            int pi = partition(bars, low, high);
+        Timer timer = new Timer(500, null);
 
-            doQuickSort(bars, low, pi - 1);
-            doQuickSort(bars, pi + 1, high);
-        }
+        int[] i = {low};
+        int[] j = {high};
+
+        timer.addActionListener(e -> {
+            if (i[0] < j[0]) {
+                int pi = partition(bars, i[0], j[0]);
+
+                doQuickSort(bars, i[0], pi - 1);
+                doQuickSort(bars, pi + 1, j[0]);
+
+                barPanel.repaint();
+            }
+            timer.stop();
+            barPanel.repaint();
+        });
+        timer.start();
     }
 
     private int partition(List<Rectangle> bars, int low, int high)
@@ -35,9 +43,7 @@ public class QuickSort {
         Rectangle pivot = bars.get(high);
 
         int i = (low - 1);
-
-        for (int j = low; j <= high - 1; j++) {
-
+        for(int j=low;j<=high-1;j++){
             if (bars.get(j).getHeight() < pivot.getHeight()) {
 
                 i++;
@@ -51,6 +57,8 @@ public class QuickSort {
         Rectangle temp = bars.get(i+1);
         bars.set(i+1, bars.get(high));
         bars.set(high, temp);
+        barPanel.repaint();
+
         return (i + 1);
     }
 
