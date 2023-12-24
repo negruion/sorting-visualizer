@@ -1,9 +1,6 @@
 package builders;
 
-import algorithms.BubbleSort;
-import algorithms.InsertionSort;
-import algorithms.MergeSort;
-import algorithms.SelectionSort;
+import algorithms.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,10 +16,11 @@ public class AlgoBtn implements ActionListener {
     JButton mergeSortBtn;
     JButton insertionSortBtn;
     JButton selectionSortBtn;
+    JButton quickSortBtn;
     JButton startBtn;
 
         // Initializing the algorithm name.
-    String algo = "bubble";
+    String algo = "bubble"; // TODO: implement enum instead of string
 
             // Initializing the panel with the bars.
     BarPanel barPanel;
@@ -32,6 +30,7 @@ public class AlgoBtn implements ActionListener {
     MergeSort mergeSort;
     InsertionSort insertionSort;
     SelectionSort selectionSort;
+    QuickSort quickSort;
 
 
     public AlgoBtn(JFrame appFrame, BarPanel barPanel){
@@ -66,8 +65,15 @@ public class AlgoBtn implements ActionListener {
         selectionSortBtn.addActionListener(this);
         appFrame.add(selectionSortBtn);
 
+        quickSortBtn = new JButton("Quick Sort");
+        quickSortBtn.setBounds(440, 600, 100, 30);
+        quickSortBtn.setBackground(Color.GRAY);
+        quickSortBtn.setFocusable(false);
+        quickSortBtn.addActionListener(this);
+        appFrame.add(quickSortBtn);
+
         startBtn = new JButton("Start");
-        startBtn.setBounds(440, 600, 100, 30);
+        startBtn.setBounds(550, 600, 100, 30);
         startBtn.setBackground(Color.GRAY);
         startBtn.setFocusable(false);
         startBtn.addActionListener(this);
@@ -77,6 +83,7 @@ public class AlgoBtn implements ActionListener {
         mergeSort = new MergeSort(barPanel);
         insertionSort = new InsertionSort(barPanel);
         selectionSort = new SelectionSort(barPanel);
+        quickSort = new QuickSort(barPanel);
     }
 
     /**
@@ -93,8 +100,7 @@ public class AlgoBtn implements ActionListener {
             setBtnGray();
             mergeSortBtn.setBackground(Color.RED);
             algo = "merge";
-        }
-        else if(e.getSource() == insertionSortBtn){
+        }else if(e.getSource() == insertionSortBtn){
             setBtnGray();
             insertionSortBtn.setBackground(Color.RED);
             algo = "insertion";
@@ -102,13 +108,17 @@ public class AlgoBtn implements ActionListener {
             setBtnGray();
             selectionSortBtn.setBackground(Color.RED);
             algo = "selection";
-        }
-        else{
+        }else if(e.getSource() == quickSortBtn){
+            setBtnGray();
+            quickSortBtn.setBackground(Color.RED);
+            algo = "quick";
+        } else{
             switch (algo){
                 case "bubble" -> bubbleSort.sort();
                 case "merge" -> mergeSort.sort();
                 case "insertion" -> insertionSort.sort();
                 case "selection" -> selectionSort.sort();
+                case "quick" -> quickSort.sort();
             }
         }
     }
