@@ -3,6 +3,7 @@ package builders;
 import algorithms.BubbleSort;
 import algorithms.InsertionSort;
 import algorithms.MergeSort;
+import algorithms.SelectionSort;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +31,7 @@ public class AlgoBtn implements ActionListener {
     BubbleSort bubbleSort;
     MergeSort mergeSort;
     InsertionSort insertionSort;
+    SelectionSort selectionSort;
 
 
     public AlgoBtn(JFrame appFrame, BarPanel barPanel){
@@ -74,6 +76,7 @@ public class AlgoBtn implements ActionListener {
         bubbleSort = new BubbleSort(barPanel);
         mergeSort = new MergeSort(barPanel);
         insertionSort = new InsertionSort(barPanel);
+        selectionSort = new SelectionSort(barPanel);
     }
 
     /**
@@ -105,6 +108,7 @@ public class AlgoBtn implements ActionListener {
                 case "bubble" -> bubbleSort.sort();
                 case "merge" -> mergeSort.sort();
                 case "insertion" -> insertionSort.sort();
+                case "selection" -> selectionSort.sort();
             }
         }
     }
