@@ -6,7 +6,7 @@ import java.awt.*;
  *
  * @author Ion Negru
  */
-public class SortingAlgoVisualizer {
+public class SortingVisualizer {
 
     /**
      * The main method is the entry point of the application. It creates an
@@ -18,7 +18,7 @@ public class SortingAlgoVisualizer {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                SortingAlgoVisualizer algoVisualizer = new SortingAlgoVisualizer();
+                SortingVisualizer algoVisualizer = new SortingVisualizer();
                 algoVisualizer.start();
             }
         });

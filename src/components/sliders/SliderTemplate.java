@@ -11,6 +11,7 @@ public class SliderTemplate extends JSlider {
 
     public SliderTemplate(int min, int max, int middle){
         super(min, max, middle);
+        this.setBackground(Color.BLACK);
     }
 
     public static class CustomSliderUI extends BasicSliderUI {
@@ -26,7 +27,7 @@ public class SliderTemplate extends JSlider {
             Rectangle knobBounds = thumbRect;
 
             // Draw circle thumb
-            g2d.setColor(Color.BLACK);
+            g2d.setColor(Color.WHITE);
             g2d.fillOval(knobBounds.x, knobBounds.y, knobBounds.width, knobBounds.height);
 
             g2d.dispose();
@@ -42,7 +43,7 @@ public class SliderTemplate extends JSlider {
             int trackHeight = 3;
             int centerY = trackBounds.y + (trackBounds.height - trackHeight) / 2;
 
-            g2d.setColor(Color.BLACK);
+            g2d.setColor(Color.WHITE);
             g2d.fillRect(trackBounds.x, centerY, trackBounds.width, trackHeight);
 
             g2d.dispose();

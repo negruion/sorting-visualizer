@@ -35,50 +35,56 @@ public class AlgoOptionsBtn implements ActionListener {
     int speed;
 
 
-    public AlgoOptionsBtn(JFrame appFrame, BarPanel barPanel){
+    public AlgoOptionsBtn(JPanel topPanel, BarPanel barPanel){
         this.barPanel = barPanel;
 
         bubbleSortBtn = new JButton("Bubble Sort");
         bubbleSortBtn.setBounds(0, 600, 100, 30);
-        bubbleSortBtn.setBackground(Color.RED);
+        bubbleSortBtn.setBackground(Color.GRAY);
+        bubbleSortBtn.setForeground(Color.WHITE);
         bubbleSortBtn.setFocusable(false);
         bubbleSortBtn.addActionListener(this);
-        appFrame.add(bubbleSortBtn);
+        topPanel.add(bubbleSortBtn);
 
         mergeSortBtn = new JButton("Merge Sort");
         mergeSortBtn.setBounds(110, 600, 100, 30);
-        mergeSortBtn.setBackground(Color.GRAY);
+        mergeSortBtn.setBackground(Color.WHITE);
+        mergeSortBtn.setForeground(Color.BLACK);
         mergeSortBtn.setFocusable(false);
         mergeSortBtn.addActionListener(this);
-        appFrame.add(mergeSortBtn);
+        topPanel.add(mergeSortBtn);
 
         insertionSortBtn = new JButton("Insertion Sort");
         insertionSortBtn.setBounds(220, 600, 100, 30);
-        insertionSortBtn.setBackground(Color.GRAY);
+        insertionSortBtn.setBackground(Color.WHITE);
+        insertionSortBtn.setForeground(Color.BLACK);
         insertionSortBtn.setFocusable(false);
         insertionSortBtn.addActionListener(this);
-        appFrame.add(insertionSortBtn);
+        topPanel.add(insertionSortBtn);
 
         selectionSortBtn = new JButton("Selection Sort");
         selectionSortBtn.setBounds(330, 600, 100, 30);
-        selectionSortBtn.setBackground(Color.GRAY);
+        selectionSortBtn.setBackground(Color.WHITE);
+        selectionSortBtn.setForeground(Color.BLACK);
         selectionSortBtn.setFocusable(false);
         selectionSortBtn.addActionListener(this);
-        appFrame.add(selectionSortBtn);
+        topPanel.add(selectionSortBtn);
 
         quickSortBtn = new JButton("Quick Sort");
         quickSortBtn.setBounds(440, 600, 100, 30);
-        quickSortBtn.setBackground(Color.GRAY);
+        quickSortBtn.setBackground(Color.WHITE);
+        quickSortBtn.setForeground(Color.BLACK);
         quickSortBtn.setFocusable(false);
         quickSortBtn.addActionListener(this);
-        appFrame.add(quickSortBtn);
+        topPanel.add(quickSortBtn);
 
         startBtn = new JButton("Start");
         startBtn.setBounds(550, 600, 100, 30);
-        startBtn.setBackground(Color.GRAY);
+        startBtn.setBackground(Color.WHITE);
+        startBtn.setForeground(Color.BLACK);
         startBtn.setFocusable(false);
         startBtn.addActionListener(this);
-        appFrame.add(startBtn);
+        topPanel.add(startBtn);
 
         bubbleSort = new BubbleSort(barPanel);
         mergeSort = new MergeSort(barPanel);
@@ -94,27 +100,33 @@ public class AlgoOptionsBtn implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == bubbleSortBtn){
-            setBtnGray();
-            bubbleSortBtn.setBackground(Color.RED);
+            resetButtonColour();
+            bubbleSortBtn.setBackground(Color.GRAY);
+            bubbleSortBtn.setForeground(Color.WHITE);
             algo = "bubble";
         }else if(e.getSource() == mergeSortBtn){
-            setBtnGray();
-            mergeSortBtn.setBackground(Color.RED);
+            resetButtonColour();
+            mergeSortBtn.setBackground(Color.GRAY);
+            mergeSortBtn.setForeground(Color.WHITE);
             algo = "merge";
         }else if(e.getSource() == insertionSortBtn){
-            setBtnGray();
-            insertionSortBtn.setBackground(Color.RED);
+            resetButtonColour();
+            insertionSortBtn.setBackground(Color.GRAY);
+            insertionSortBtn.setForeground(Color.WHITE);
             algo = "insertion";
         }else if(e.getSource() == selectionSortBtn){
-            setBtnGray();
-            selectionSortBtn.setBackground(Color.RED);
+            resetButtonColour();
+            selectionSortBtn.setBackground(Color.GRAY);
+            selectionSortBtn.setForeground(Color.WHITE);
             algo = "selection";
         }else if(e.getSource() == quickSortBtn){
-            setBtnGray();
-            quickSortBtn.setBackground(Color.RED);
+            resetButtonColour();
+            quickSortBtn.setBackground(Color.GRAY);
+            quickSortBtn.setForeground(Color.WHITE);
             algo = "quick";
         } else{
             speed = barPanel.getSpeed();
+            speed = (100*100)/(speed*speed) * 10;
             switch (algo){
                 case "bubble" -> bubbleSort.sort(speed);
                 case "merge" -> mergeSort.sort(speed);
@@ -128,11 +140,20 @@ public class AlgoOptionsBtn implements ActionListener {
     /**
      * Set all buttons to gray.
      */
-    private void setBtnGray(){
-        bubbleSortBtn.setBackground(Color.GRAY);
-        mergeSortBtn.setBackground(Color.GRAY);
-        insertionSortBtn.setBackground(Color.GRAY);
-        selectionSortBtn.setBackground(Color.GRAY);
-        quickSortBtn.setBackground(Color.GRAY);
+    private void resetButtonColour(){
+        bubbleSortBtn.setBackground(Color.WHITE);
+        bubbleSortBtn.setForeground(Color.BLACK);
+
+        mergeSortBtn.setBackground(Color.WHITE);
+        mergeSortBtn.setForeground(Color.BLACK);
+
+        insertionSortBtn.setBackground(Color.WHITE);
+        insertionSortBtn.setForeground(Color.BLACK);
+
+        selectionSortBtn.setBackground(Color.WHITE);
+        selectionSortBtn.setForeground(Color.BLACK);
+
+        quickSortBtn.setBackground(Color.WHITE);
+        quickSortBtn.setForeground(Color.BLACK);
     }
 }
