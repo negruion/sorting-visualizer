@@ -1,5 +1,4 @@
-import builders.AppFrame;
-import builders.AppSlider;
+import components.AppFrame;
 import java.awt.*;
 
 /**
@@ -7,7 +6,7 @@ import java.awt.*;
  *
  * @author Ion Negru
  */
-public class AlgoVisualizer {
+public class SortingAlgoVisualizer {
 
     /**
      * The main method is the entry point of the application. It creates an
@@ -19,22 +18,20 @@ public class AlgoVisualizer {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                AlgoVisualizer algoVisualizer = new AlgoVisualizer();
+                SortingAlgoVisualizer algoVisualizer = new SortingAlgoVisualizer();
                 algoVisualizer.start();
             }
         });
     }
 
     /**
-     * Starts the application by creating an instance of the AppFrame class and
-     * an instance of the AppSlider class.
+     * Starts the application by creating an instance of the AppFrame class.
      */
     public void start() {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 AppFrame appFrame = new AppFrame();
-                AppSlider appSlider = new AppSlider(appFrame);
             }
         });
     }
