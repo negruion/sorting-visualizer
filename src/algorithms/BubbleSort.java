@@ -33,7 +33,11 @@ public class BubbleSort {
             Rectangle nextBar = bars.get(j[0] + 1);
 
             Timer swapTimer = new Timer(100, e2 -> {
-                barPanel.highlight(j[0], j[0] + 1);
+                if (i[0] < bars.size() - 1) {
+                    barPanel.setGreenBar(j[0]);
+                    barPanel.setRedBar(j[0] + 1);
+                    barPanel.repaint();
+                }
             });
 
             swapTimer.setRepeats(false);
@@ -45,7 +49,9 @@ public class BubbleSort {
                 bars.set(j[0] + 1, currentBar);
                 swapped[0] = true;
 
-                barPanel.highlight(j[0] + 1, j[0]);
+                barPanel.setGreenBar(j[0] + 1);
+                barPanel.setRedBar(j[0]);
+                barPanel.repaint();
             }
 
             if (++j[0] >= bars.size() - i[0] - 1) {
@@ -56,17 +62,13 @@ public class BubbleSort {
             }
 
             if (i[0] >= bars.size() - 1) {
-                barPanel.highlightReset();
                 timer.stop();
-                barPanel.repaint();
+                barPanel.barColourReset();
             }
         });
 
         timer.start();
     }
-
-
-
 
     private void swap(Rectangle r1, Rectangle r2){
         int x_1 = r1.x, y_1 = r1.y, x_2 = r2.x, y_2 = r2.y;

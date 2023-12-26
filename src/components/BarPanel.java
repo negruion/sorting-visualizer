@@ -14,7 +14,7 @@ public class BarPanel extends JPanel {
     private List<Rectangle> bars;
     private int speed;
 
-    int[] green={-1, -1};
+    int green=-1;
     int red=-1;
 
     public BarPanel(){
@@ -63,33 +63,25 @@ public class BarPanel extends JPanel {
         for (int k = 0; k < bars.size(); k++) {
             Rectangle bar = bars.get(k);
 
-            if (k == green[0] || k == green[1]) {  // Current bar (green)
+            if (k == green) {  // Current bar (green)
                 g2d.setColor(Color.GREEN);
             } else if (k == red) {  // Next bar (red)
                 g2d.setColor(Color.RED);
             } else {
                 g2d.setColor(Color.WHITE);
             }
-
             g2d.fillRect(bar.x, bar.y, bar.width, bar.height);
         }
     }
 
     public void setGreenBar(int bar){
-        green[0] = bar;
-        green[1] = -1;
-        red = -1;
+        green = bar;
     }
     public void setRedBar(int bar){
         red = bar;
     }
-    public void highlight(int i, int j){
-        setGreenBar(i);
-        setRedBar(j);
-        this.repaint();
-    }
-    public void highlightReset(){
-        green[0] = green[1] = -1;
+    public void barColourReset(){
+        green = -1;
         red = -1;
         this.repaint();
     }
