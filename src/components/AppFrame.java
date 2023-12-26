@@ -140,7 +140,7 @@ public class AppFrame extends JFrame {
 
         setUpBars();
         setUpSliders();
-        setUpAlgoOptionsBtn();
+        setUpAlgorithmSelector();
 
         this.setVisible(true);
     }
@@ -184,8 +184,8 @@ public class AppFrame extends JFrame {
     /**
      * Sets up the algorithm options button.
      */
-    private void setUpAlgoOptionsBtn() {
-        new AlgoOptionsBtn(middlePanel, this.bars);
+    private void setUpAlgorithmSelector() {
+        new AlgorithmSelector(middlePanel, this.bars);
         this.add(middlePanel, BorderLayout.CENTER);
     }
 }

@@ -14,6 +14,7 @@ public class BarPanel extends JPanel {
     private List<Rectangle> bars;
     private int speed;
 
+    // bars to be coloured
     int green=-1;
     int red=-1;
 
@@ -23,11 +24,60 @@ public class BarPanel extends JPanel {
     }
 
     /**
-     * Sets the number of bars.
+     * Sets the number of bars, and calls the method to generate them.
      * @param numberOfBars the number of bars to set
      */
     public void setNumberOfBars(int numberOfBars) {
         generateRandomBars(numberOfBars);
+    }
+
+    /**
+     * Sets the speed.
+     * @param speed the speed to set
+     */
+    public void setSpeed(int speed){
+        this.speed = speed;
+    }
+
+    /**
+     * Sets the green bar.
+     * @param bar the bar to set
+     */
+    public void setGreenBar(int bar){
+        green = bar;
+    }
+
+    /**
+     * Sets the red bar.
+     * @param bar the bar to set
+     */
+    public void setRedBar(int bar){
+        red = bar;
+    }
+
+    /**
+     * Resets the green and red bars.
+     */
+    public void barColourReset(){
+        green = -1;
+        red = -1;
+        this.repaint();
+    }
+
+    /**
+     * Returns the list of bars.
+     * @return the list of bars.
+     */
+    public List<Rectangle> getBars() {
+        return bars;
+    }
+
+    /**
+     * Returns the speed.
+     * @return the speed
+     */
+    public int getSpeed(){
+        return this.speed;
     }
 
     /**
@@ -42,13 +92,12 @@ public class BarPanel extends JPanel {
         int barWidth = (getWidth() - totalSpacing) / numberOfBars;
 
         for (int i = 0; i < numberOfBars; i++) {
-            int x = i * (barWidth + 5); // Add 5 pixels of spacing
+            int x = i * (barWidth + 5); // Add 5 pixels of spacing in between bars
             int y = getHeight() - 1 - random.nextInt(500);
 
             Rectangle bar = new Rectangle(x, y, barWidth, getHeight() - y);
             bars.add(bar);
         }
-        this.repaint();
     }
 
     /**
@@ -73,32 +122,4 @@ public class BarPanel extends JPanel {
             g2d.fillRect(bar.x, bar.y, bar.width, bar.height);
         }
     }
-
-    public void setGreenBar(int bar){
-        green = bar;
-    }
-    public void setRedBar(int bar){
-        red = bar;
-    }
-    public void barColourReset(){
-        green = -1;
-        red = -1;
-        this.repaint();
-    }
-
-    /**
-     * Returns the list of bars.
-     * @return the list of bars.
-     */
-    public List<Rectangle> getBars() {
-        return bars;
-    }
-
-    public void setSpeed(int speed){
-        this.speed = speed;
-    }
-    public int getSpeed(){
-        return this.speed;
-    }
-
 }

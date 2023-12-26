@@ -9,16 +9,19 @@ import javax.swing.*;
  * that will be sorted.
  */
 public class BarSlider extends SliderTemplate {
-    public BarSlider(BarPanel barPanel, JLabel label, int min, int max) {
+    public BarSlider(BarPanel bars, JLabel label, int min, int max) {
         super(min, max, (max + min) / 2);
         setPreferredSize(new Dimension(200, 50));
         setUI(new CustomSliderUI(this));
 
+        bars.setNumberOfBars(getValue());
+        bars.repaint();
+
         addChangeListener(e -> {
             int val = getValue();
-            barPanel.setNumberOfBars(val);
+            bars.setNumberOfBars(val);
             label.setText("Bars: " + val);
-            barPanel.repaint();
+            bars.repaint();
         });
     }
 }
