@@ -125,6 +125,8 @@ public class AppFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200, 700);
         this.setLayout(new BorderLayout());
+        ImageIcon icon = new ImageIcon("src/res/photos/icon.jpeg");
+        this.setIconImage(icon.getImage());
 
         topPanel = new JPanel();
         topPanel.setLayout(new FlowLayout());
