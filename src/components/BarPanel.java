@@ -15,8 +15,9 @@ public class BarPanel extends JPanel {
     private int speed;
 
     // bars to be coloured
-    int green=-1;
-    int red=-1;
+    private int green=-1;
+    private int red=-1;
+    private int redMin = -1;
 
     public BarPanel(){
         this.setPreferredSize(new Dimension(1100,500));
@@ -56,11 +57,20 @@ public class BarPanel extends JPanel {
     }
 
     /**
+     * Sets the lowest red bar.
+     * @param bar the bar to set
+     */
+    public void setMinRedBar(int bar){
+        redMin = bar;
+    }
+
+    /**
      * Resets the green and red bars.
      */
     public void barColourReset(){
         green = -1;
         red = -1;
+        redMin = -1;
         this.repaint();
     }
 
@@ -114,7 +124,7 @@ public class BarPanel extends JPanel {
 
             if (k == green) {  // Current bar (green)
                 g2d.setColor(Color.GREEN);
-            } else if (k == red) {  // Next bar (red)
+            } else if (k == red || k == redMin) {  // Next bar (red)
                 g2d.setColor(Color.RED);
             } else {
                 g2d.setColor(Color.WHITE);
