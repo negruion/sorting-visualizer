@@ -35,10 +35,6 @@ public class SelectionSort {
                 i[0]++;
             }else{
                 timer.stop();
-                System.out.println("Selection Sort");
-                for(Rectangle bar : bars){
-                    System.out.println(bar.getHeight());
-                }
             }
         });
 
