@@ -22,14 +22,12 @@ public class AlgorithmSelector implements ActionListener {
     JButton mergeSortBtn;
     JButton insertionSortBtn;
     JButton selectionSortBtn;
-    JButton quickSortBtn;
     JButton startBtn;
 
     BubbleSort bubbleSort;
     MergeSort mergeSort;
     InsertionSort insertionSort;
     SelectionSort selectionSort;
-    QuickSort quickSort;
 
     private final List<JButton> algorithmButtons = new ArrayList<>();
     private final Map<JButton, Algorithms> buttonAlgorithmMap = new HashMap<>();
@@ -61,10 +59,6 @@ public class AlgorithmSelector implements ActionListener {
         setupButton(selectionSortBtn, 330, 600);
         algorithmButtons.add(selectionSortBtn);
 
-        quickSortBtn = new JButton("Quick Sort");
-        setupButton(quickSortBtn, 440, 600);
-        algorithmButtons.add(quickSortBtn);
-
         startBtn = new JButton("Start");
         setupButton(startBtn, 550, 600);
         startBtn.setEnabled(false);
@@ -73,13 +67,11 @@ public class AlgorithmSelector implements ActionListener {
         buttonAlgorithmMap.put(mergeSortBtn, Algorithms.MERGE);
         buttonAlgorithmMap.put(insertionSortBtn, Algorithms.INSERTION);
         buttonAlgorithmMap.put(selectionSortBtn, Algorithms.SELECTION);
-        buttonAlgorithmMap.put(quickSortBtn, Algorithms.QUICK);
 
         bubbleSort = new BubbleSort(barPanel);
         mergeSort = new MergeSort(barPanel);
         insertionSort = new InsertionSort(barPanel);
         selectionSort = new SelectionSort(barPanel);
-        quickSort = new QuickSort(barPanel);
     }
 
     /**
@@ -97,7 +89,6 @@ public class AlgorithmSelector implements ActionListener {
                 case MERGE -> mergeSort.sort(speed);
                 case INSERTION -> insertionSort.sort(speed);
                 case SELECTION -> selectionSort.sort(speed);
-                case QUICK -> quickSort.sort(speed);
             }
         }else{
             startBtn.setEnabled(true);
