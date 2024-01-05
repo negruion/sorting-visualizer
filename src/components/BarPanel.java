@@ -16,8 +16,10 @@ public class BarPanel extends JPanel {
 
     // bars to be coloured
     private int green=-1;
+    private int greenAdd=-1;
     private int red=-1;
     private int redMin = -1;
+    private int blue = -1;
 
     public BarPanel(){
         this.setPreferredSize(new Dimension(1100,500));
@@ -47,6 +49,9 @@ public class BarPanel extends JPanel {
     public void setGreenBar(int bar){
         green = bar;
     }
+    public void setAddGreenBar(int bar){
+        greenAdd = bar;
+    }
 
     /**
      * Sets the red bar.
@@ -65,12 +70,22 @@ public class BarPanel extends JPanel {
     }
 
     /**
+     * Sets the colour of the middle bar to blue.
+     * @param bar the bar to set
+     */
+    public void setBlueBar(int bar){
+        blue = bar;
+    }
+
+    /**
      * Resets the green and red bars.
      */
     public void barColourReset(){
         green = -1;
+        greenAdd = -1;
         red = -1;
         redMin = -1;
+        blue = -1;
         this.repaint();
     }
 
@@ -122,10 +137,12 @@ public class BarPanel extends JPanel {
         for (int k = 0; k < bars.size(); k++) {
             Rectangle bar = bars.get(k);
 
-            if (k == green) {  // Current bar (green)
+            if (k == green || k == greenAdd) {  // Current bar (green)
                 g2d.setColor(Color.GREEN);
             } else if (k == red || k == redMin) {  // Next bar (red)
                 g2d.setColor(Color.RED);
+            }else if(k == blue){
+                g2d.setColor(new Color(93, 181, 240));
             } else {
                 g2d.setColor(Color.WHITE);
             }
