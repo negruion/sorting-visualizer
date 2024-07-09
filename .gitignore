@@ -1,7 +1,36 @@
 ### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+
+### IntelliJ IDEA project specific ###
+*.class
+*.log
+*.jar
+*.war
+*.ear
+*.tar.gz
+*.zip
+*.hprof
+
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+### Gradle ###
+.gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+gradle-app.setting
 
 ### Eclipse ###
 .apt_generated
@@ -27,3 +56,37 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+.AppleDouble
+.LSOverride
+
+### Windows ###
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+### Linux ###
+*~
+#*#
+.#*
+*.swp
+*.swo
+*.tmp
+
+### Log files ###
+*.log
+
+### Temporary files ###
+tmp/
+temp/
+*.tmp
+*.temp
+
+### Application specific ###
+*.env
+
+### IDE specific ###
+*.ide
+*.bak
+*.swp
+*~.*
